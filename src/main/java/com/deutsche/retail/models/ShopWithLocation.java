@@ -5,27 +5,27 @@ package com.deutsche.retail.models;
  * Created by saurav on 28/8/16.
  */
 public class ShopWithLocation extends Shop {
-    protected String shopLatitude;
-    protected String shopLongitude;
+    protected Double shopLatitude;
+    protected Double shopLongitude;
 
-    public ShopWithLocation(String shopLatitude, String shopLongitude) {
+    public ShopWithLocation(Double shopLatitude, Double shopLongitude) {
         this.shopLatitude = shopLatitude;
         this.shopLongitude = shopLongitude;
     }
 
-    public String getShopLatitude() {
+    public Double getShopLatitude() {
         return shopLatitude;
     }
 
-    public void setShopLatitude(String shopLatitude) {
+    public void setShopLatitude(Double shopLatitude) {
         this.shopLatitude = shopLatitude;
     }
 
-    public String getShopLongitude() {
+    public Double getShopLongitude() {
         return shopLongitude;
     }
 
-    public void setShopLongitude(String shopLongitude) {
+    public void setShopLongitude(Double shopLongitude) {
         this.shopLongitude = shopLongitude;
     }
 
