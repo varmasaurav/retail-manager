@@ -3,9 +3,9 @@
 
 <beans>
     <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
-    <bean id="shopLocatorService" class="com.deutsche.retail.service.shop.ShopLocatorServiceImpl">
+    <bean id="shopLocatorService" class="com.company.retail.service.shop.ShopLocatorServiceImpl">
         <property name="shopListHolder" ref="shopListHolder" />
     </bean>
-    <bean id="shopListHolder" class="com.deutsche.retail.db.ShopListHolder" />
+    <bean id="shopListHolder" class="com.company.retail.db.ShopListHolder" />
 </beans>
 
