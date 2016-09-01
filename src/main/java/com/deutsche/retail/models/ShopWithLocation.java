@@ -8,11 +8,11 @@ public class ShopWithLocation extends Shop {
     protected Double shopLatitude;
     protected Double shopLongitude;
 
+    public ShopWithLocation(){}
     public ShopWithLocation(Double shopLatitude, Double shopLongitude) {
         this.shopLatitude = shopLatitude;
         this.shopLongitude = shopLongitude;
     }
-
     public Double getShopLatitude() {
         return shopLatitude;
     }
@@ -21,6 +21,10 @@ public class ShopWithLocation extends Shop {
         this.shopLatitude = shopLatitude;
     }
 
+    public void setShopLatLong(Double shopLatitude, Double shopLongitude) {
+        this.setShopLatitude(shopLatitude);
+        this.setShopLongitude(shopLongitude);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

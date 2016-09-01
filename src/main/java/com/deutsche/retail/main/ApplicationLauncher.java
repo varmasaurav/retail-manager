@@ -1,5 +1,6 @@
 package com.deutsche.retail.main;
 
+import com.deutsche.retail.db.ShopListHolder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,5 +18,10 @@ public class ApplicationLauncher {
     @Bean
     public ObjectMapper objectMapper() {
         return new ObjectMapper();
+    }
+
+    @Bean
+    public ShopListHolder shopListHolder() {
+        return new ShopListHolder();
     }
 }

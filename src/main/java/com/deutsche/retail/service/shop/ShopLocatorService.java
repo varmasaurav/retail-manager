@@ -4,6 +4,8 @@ import com.deutsche.retail.models.Location;
 import com.deutsche.retail.models.Shop;
 import com.deutsche.retail.models.ShopWithLocation;
 
+import java.util.List;
+
 /**
  * Exposed Shop related API from the application
  * Created by saurav on 28/8/16.
@@ -24,4 +26,9 @@ public interface ShopLocatorService {
      * @return {@link ShopWithLocation}
      */
     ShopWithLocation nearest(Location location);
+
+    /**
+     * Gets the list of shops (Added for testing purpose)
+     */
+    List<ShopWithLocation> getAll();
 }
