@@ -1,7 +1,7 @@
 package com.deutsche.retail.models;
 
 /**
- * Model class to hold shop data with location attributes
+ * Response Model class to hold shop data with location attributes
  * Created by saurav on 28/8/16.
  */
 public class ShopWithLocation extends Shop {

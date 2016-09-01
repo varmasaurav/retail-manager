@@ -1,7 +1,7 @@
 package com.deutsche.retail.models;
 
 /**
- * Model class to hold shop data
+ * Request Model class to hold shop data
  * Created by saurav on 28/8/16.
  */
 public class Shop {
