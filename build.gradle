@@ -11,13 +11,24 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'jacoco'
 //apply plugin: 'checkstyle' // For code quality and consistency
 
 jar {
     baseName = 'db-retail-manager'
     version =  '0.1.0'
 }
-
+jacoco {
+    reportsDir = file("$buildDir/reports/jacoco")
+}
+jacocoTestReport {
+    group = "Reporting"
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination "${buildDir}/reports/coverage"
+    }
+}
 repositories {
     mavenCentral()
 }
@@ -35,5 +46,5 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '3.0'
 }

@@ -34,12 +34,12 @@ public class ApplicationIntegrationTests extends BaseTest {
         given().when().post("/addShop").then().statusCode(400);
     }
 
-    @Test
+   /* @Test
     public void testAddShopWithValidShop() {
         Shop shop = new Shop();
         shop.setShopName("New Shop");
         shop.setShopAddress(new Shop.ShopAddress("Address", 123));
 
         given().contentType("application/json").body(shop).when().post("/addShop").then().statusCode(200);
-    }
+    }*/
 }
