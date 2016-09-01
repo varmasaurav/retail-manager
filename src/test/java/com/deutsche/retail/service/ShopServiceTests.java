@@ -1,8 +1,6 @@
 package com.deutsche.retail.service;
 
 import com.deutsche.retail.models.Location;
-import com.deutsche.retail.models.Shop;
-import com.deutsche.retail.service.shop.ShopLocatorService;
 import com.deutsche.retail.service.shop.ShopLocatorServiceImpl;
 import org.junit.Test;
 

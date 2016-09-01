@@ -21,6 +21,27 @@ public class ShopWithLocation extends Shop {
         this.shopLatitude = shopLatitude;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ShopWithLocation that = (ShopWithLocation) o;
+
+        if (shopName != null ? !shopName.equals(that.shopName) : that.shopName != null) return false;
+        if (shopLatitude != null ? !shopLatitude.equals(that.shopLatitude) : that.shopLatitude != null) return false;
+        return shopLongitude != null ? shopLongitude.equals(that.shopLongitude) : that.shopLongitude == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = shopLatitude != null ? shopLatitude.hashCode() : 0;
+        result = 31 * result + (shopLongitude != null ? shopLongitude.hashCode() : 0);
+        result = 11 * result + (shopName != null ? shopName.hashCode() : 0);
+        return result;
+    }
+
     public Double getShopLongitude() {
         return shopLongitude;
     }
