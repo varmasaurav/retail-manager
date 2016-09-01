@@ -86,5 +86,13 @@ public class Shop {
         public void setPostCode(int postCode) {
             this.postCode = postCode;
         }
+
+        @Override
+        public String toString() {
+            return "ShopAddress{" +
+                    "number='" + number + '\'' +
+                    ", postCode=" + postCode +
+                    '}';
+        }
     }
 }

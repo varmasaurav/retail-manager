@@ -20,4 +20,8 @@ public class ShopController {
     public String status(@RequestHeader("Accept-Language") Locale locale) {
         return Messages.APP_SUCCESS;
     }
+
+    // TODO: 29/8/16 - API 1
+
+    // TODO: 29/8/16 - API 2
 }

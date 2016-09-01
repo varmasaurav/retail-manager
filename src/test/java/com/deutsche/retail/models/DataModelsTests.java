@@ -42,7 +42,7 @@ public class DataModelsTests {
 
     @Test
     public void testShopWithLocationModel() throws JsonProcessingException {
-        ShopWithLocation shop = new ShopWithLocation(78.903, 81.09);
+        ShopWithLocation shop = new ShopWithLocation(new Location(78.903, 81.09));
         shop.setShopName("Test Shop");
         shop.setShopAddress(new Shop.ShopAddress("1234", 600078));
 
@@ -51,11 +51,9 @@ public class DataModelsTests {
 
         JSONAssert.assertEquals(expected, actual, false);
 
-        ShopWithLocation shop_2 = new ShopWithLocation(78.903, 81.09);
+        ShopWithLocation shop_2 = new ShopWithLocation(new Location(78.903, 81.09));
         shop_2.setShopName("Test Shop");
         shop_2.setShopAddress(new Shop.ShopAddress("1234", 600078));
-
-
         assert(shop.equals(shop_2));
 
         shop_2.setShopName("test name");

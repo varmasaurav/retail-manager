@@ -9,9 +9,13 @@ public class ShopWithLocation extends Shop {
     protected Double shopLongitude;
 
     public ShopWithLocation(){}
-    public ShopWithLocation(Double shopLatitude, Double shopLongitude) {
-        this.shopLatitude = shopLatitude;
-        this.shopLongitude = shopLongitude;
+    public ShopWithLocation(Shop shop) {
+        this.setShopName(shop.getShopName());
+        this.setShopAddress(shop.getShopAddress());
+    }
+    public ShopWithLocation(Location location) {
+        this.shopLatitude = location.getLatitude();
+        this.shopLongitude = location.getLongitude();
     }
     public Double getShopLatitude() {
         return shopLatitude;
@@ -54,4 +58,15 @@ public class ShopWithLocation extends Shop {
         this.shopLongitude = shopLongitude;
     }
 
+    public Location getLocation() {
+        return new Location(getShopLatitude(), getShopLongitude());
+    }
+
+    @Override
+    public String toString() {
+        return "ShopWithLocation{" +
+                "shopLatitude=" + shopLatitude +
+                ", shopLongitude=" + shopLongitude +
+                '}';
+    }
 }

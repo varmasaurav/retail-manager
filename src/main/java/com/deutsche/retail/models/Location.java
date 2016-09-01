@@ -40,4 +40,11 @@ public class Location {
     }
 
 
+    @Override
+    public String toString() {
+        return "Location{" +
+                "latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
 }
