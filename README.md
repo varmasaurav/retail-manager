@@ -76,7 +76,7 @@ RESPONSE BODY  - {"successful": true}
 ```
 e.g - http://localhost:8080/retail/add-shop
 
-## Get Nearest Shop
+### Get Nearest Shop
 
 This api gets the nearest shop to the location (latitude, longtitude) passed in the request parameter.
 
