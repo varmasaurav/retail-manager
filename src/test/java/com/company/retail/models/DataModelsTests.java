@@ -1,7 +1,9 @@
 package com.company.retail.models;
 
 import com.company.retail.BaseTest;
+import com.company.retail.db.ShopListHolder;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -63,5 +65,28 @@ public class DataModelsTests extends BaseTest {
         location_1 = new Location(0.00, 0.000);
         location_2 = new Location(0.0, 0.0);
         assert(location_1.equals(location_2));
+    }
+
+    @Test
+    public void testShopListHolder() {
+        ShopListHolder shopListHolder = new ShopListHolder();
+        ShopWithLocation shop = new ShopWithLocation(new Location(78.903, 81.09));
+        shop.setShopName("Test Shop");
+        shop.setShopAddress(new Shop.ShopAddress("1234", 600078));
+        shopListHolder.add(shop);
+        Assert.assertTrue(shop.equals(shopListHolder.get(0)));
+        ShopWithLocation shop2 = new ShopWithLocation(new Location(78.903, 81.09));
+        shop.setShopName("Test Shop");
+        shop.setShopAddress(new Shop.ShopAddress("1234", 600078));
+        shopListHolder.add(shop2);
+
+        Assert.assertTrue(shopListHolder.getAll().size() == 2);
+
+        shopListHolder.remove(shop);
+        Assert.assertTrue(shopListHolder.getAll().size() == 1);
+        Assert.assertTrue(shop2.equals(shopListHolder.get(0)));
+
+        shopListHolder.remove(0);
+        Assert.assertTrue(shopListHolder.getAll().size() == 0);
     }
 }

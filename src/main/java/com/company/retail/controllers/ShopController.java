@@ -14,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -34,6 +33,10 @@ public class ShopController {
     @Autowired
     ShopLocatorService shopLocatorService;
 
+    public void setObjectMapper(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
     @Autowired
     ObjectMapper objectMapper;
 
@@ -42,13 +45,13 @@ public class ShopController {
         return Messages.APP_SUCCESS;
     }
 
-    @RequestMapping(path = "/addShop", method = RequestMethod.POST)
-    public String addShop(HttpServletRequest request, @Validated @RequestBody Shop shop){
+    @RequestMapping(path = "/shop/add", method = RequestMethod.POST)
+    public String addShop(HttpServletResponse _response, @Validated @RequestBody Shop shop){
         String response;
-
         try {
             shopLocatorService.save(shop);
             response = objectMapper.writeValueAsString(new ServiceResponse(true));
+            _response.setStatus(HttpStatus.CREATED.value());
         } catch (IOException io) {
             logger.error("Error while processing input during addShop", io);
             throw new RetailManagerServiceException(io, Messages.RESPONSE_NOT_PROCESSED, HttpStatus.OK);
@@ -56,8 +59,8 @@ public class ShopController {
         return response ;
     }
 
-    @RequestMapping(path = "/nearestShop", method = RequestMethod.GET)
-    public String getNearestShop(@RequestParam("customerLongitude") String latitude,
+    @RequestMapping(path = "/shop/nearest", method = RequestMethod.GET)
+    public String getNearestShop(@RequestParam("customerLatitude") String latitude,
                                            @RequestParam("customerLongitude") String longitude) {
         String result = null;
         try {
@@ -67,7 +70,10 @@ public class ShopController {
         } catch (NumberFormatException e) {
             logger.error("Invalid value for longitude - " + longitude + " or latitude - " + latitude, e);
             throw new RetailManagerServiceException(e, Messages.INVALID_LOCATION, HttpStatus.BAD_REQUEST);
-        } catch (Exception e) {
+        } catch (RetailManagerServiceException rmse) {
+            throw rmse;
+        }
+        catch (Exception e) {
             logger.error("Error getting nearest shop for location - (" + latitude + ", " +longitude + ")" , e);
             throw new RetailManagerServiceException(e, Messages.SERVICE_UNAVAILABLE, HttpStatus.SERVICE_UNAVAILABLE);
         }
@@ -76,13 +82,13 @@ public class ShopController {
     /**
      * Exception handling at controller level.
      * @param e
-     * @param response
+     * @param _response
      * @return
      */
     // Use @ControlAdvice for Global Exception handling
     @ExceptionHandler(value = RetailManagerServiceException.class)
-    public String handler(RetailManagerServiceException e, HttpServletResponse response) {
-        response.setStatus(e.getHttpStatusCode().value());
+    public String handler(RetailManagerServiceException e, HttpServletResponse _response) {
+        _response.setStatus(e.getHttpStatusCode().value());
         return e.getMessage();
     }
 }

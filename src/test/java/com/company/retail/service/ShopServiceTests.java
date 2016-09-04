@@ -1,6 +1,7 @@
 package com.company.retail.service;
 
 import com.company.retail.BaseTest;
+import com.company.retail.exception.RetailManagerServiceException;
 import com.company.retail.models.Location;
 import com.company.retail.models.Shop;
 import com.company.retail.service.shop.ShopLocatorServiceImpl;
@@ -39,14 +40,17 @@ public class ShopServiceTests extends BaseTest {
         assert (location.equals(location_expected));
     }
 
-    @Test
+    @Test(expected = RetailManagerServiceException.class)
     public void testSave() {
         Shop shop = buildShop("Test Shop", "1600 Amphitheatre Parkway Mountain View, CA", 94043);
         shopLocatorService.save(shop);
 
         ShopWithLocation shop_with_location = buildShopWithLocation(shop, location_expected.getLatitude(), location_expected.getLongitude());
         assert (shopLocatorService.getAll().get(0).equals(shop_with_location));
+
+        shopLocatorService.save(null);
     }
+
 
     @Test
     public void testNearest() {
@@ -78,6 +82,8 @@ public class ShopServiceTests extends BaseTest {
          * s5 -> sqrt(9)
          */
         assert shopLocatorService.nearest(new Location(2.0,-1.0)).equals(s1);
+        // Same location as s1
+        assert shopLocatorService.nearest(new Location(1.0,1.0)).equals(s1);
 
         // TODO: 1/9/16 More tests with edge cases, boundary values, equal distance? 
     }

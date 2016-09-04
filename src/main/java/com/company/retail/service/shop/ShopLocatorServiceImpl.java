@@ -33,7 +33,7 @@ public class ShopLocatorServiceImpl implements ShopLocatorService {
         validate(shop);
         // Query string for the Geo API
         Shop.ShopAddress shop_address = shop.getShopAddress();
-        StringBuilder address = new StringBuilder(shop_address.getNumber()).append(".").append(shop_address.getPostCode());
+        StringBuilder address = new StringBuilder(shop_address.getNumber()).append(",").append(shop_address.getPostCode());
         // Get the latitude & longitude
         Location location = geoApiResolver(address.toString());
         // Create Shop details with shop and its location

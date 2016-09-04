@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 public class ApplicationLauncher {
     public static void main(String[] args) {
         SpringApplication.run(ApplicationLauncher.class, args);
+        System.out.println("Application has started successfully with server running at http://localhost:8080/retail/");
     }
 
     @Bean
