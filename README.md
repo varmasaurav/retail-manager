@@ -1,4 +1,4 @@
-# retail-manager rest service
+# retail-manager
 This rest web service is built with spring boot
 
 ## Dependencies
@@ -44,7 +44,7 @@ Application has started successfully with server running at http://localhost:808
 ```
 
 
-# Test
+## Test
 
 The application somes with unit and integration tests for the rest end points. Use the following command to run tests.
 
@@ -60,9 +60,36 @@ gradle test jacocoTestReport
 
 Navigate and open `build/reports/coverage/index.html` to see the coverage
 
+## Server Side API
+The retail-manager service uses Google's GeoCoding API to locate a shop and exposes following rest APIs to add a shop and get the nearest shop. Here are they -
 
+### Add Shop
 
+This api adds a shop to the in-memory database.
 
+```
+URI            - /retail/add-shop
+REQUEST BODY   - {"shopName" : "Test Shop","shopAddress" : {"number": "1600 Amphitheatre Parkway Mountain View, CA","postCode" : 94043}}
+HTTP METHOD    - POST
+HTTP RESPONSE  - 201 OK
+RESPONSE BODY  - {"successful": true}
+```
+e.g - http://localhost:8080/retail/add-shop
+
+## Get Nearest Shop
+
+This api gets the nearest shop to the location (latitude, longtitude) passed in the request parameter.
+
+```
+URI            - /retail/nearest-shop
+REQUEST PARAMS - customerLatitude, customerLongitude
+HTTP METHOD    - GET
+HTTP RESPONSE  - 200 OK
+RESPONSE BODY  - {"shopName" : "Test Shop","shopAddress" : {"number": "1234","postCode" : 600078}, "shopLatitude": "78.903", "shopLongitude" : "81.09"}
+
+```
+
+e.g - http://localhost:8080/retail/nearest-shop?customerLatitude=56.90678428&customerLongitude=67.78942
 
 
 
