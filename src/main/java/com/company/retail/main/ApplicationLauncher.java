@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * Created by saurav on 28/8/16.
  */
-@SpringBootApplication(scanBasePackages = "com.deutsche.retail")
+@SpringBootApplication(scanBasePackages = "com.company.retail")
 public class ApplicationLauncher {
     public static void main(String[] args) {
         SpringApplication.run(ApplicationLauncher.class, args);
