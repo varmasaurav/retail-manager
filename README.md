@@ -28,6 +28,11 @@ Running the application is as easy as building and a one step process. Once you 
 ```
 java -jar path/to/jar/db-retail-manager-0.1.0.jar
 ```
+During development you might want to run the application with jar, the following command will be useful to run without jar.
+
+```
+gradle run
+```
 
 You will see the following message after a successful start up.
  ```
@@ -40,7 +45,7 @@ You will see the following message after a successful start up.
  :: Spring Boot ::        (v1.4.0.RELEASE)
 
 
-Application has started successfully with server running at http://localhost:8080/retail
+Application has started successfully with server running at http://localhost:8080
 ```
 
 
@@ -68,7 +73,7 @@ The retail-manager service uses Google's GeoCoding API to locate a shop and expo
 This api adds a shop to the in-memory database.
 
 ```
-URI            - /retail/add-shop
+URI            - /shop/add
 REQUEST BODY   - {"shopName" : "Test Shop","shopAddress" : {"number": "1600 Amphitheatre Parkway Mountain View, CA","postCode" : 94043}}
 HTTP METHOD    - POST
 HTTP RESPONSE  - 201 OK
@@ -81,7 +86,7 @@ e.g - http://localhost:8080/retail/add-shop
 This api gets the nearest shop to the location (latitude, longtitude) passed in the request parameter.
 
 ```
-URI            - /retail/nearest-shop
+URI            - /shop/nearest
 REQUEST PARAMS - customerLatitude, customerLongitude
 HTTP METHOD    - GET
 HTTP RESPONSE  - 200 OK
@@ -89,7 +94,7 @@ RESPONSE BODY  - {"shopName" : "Test Shop","shopAddress" : {"number": "1234","po
 
 ```
 
-e.g - http://localhost:8080/retail/nearest-shop?customerLatitude=56.90678428&customerLongitude=67.78942
+e.g - http://localhost:8080/shop/nearest?customerLatitude=56.90678428&customerLongitude=67.78942
 
 
 
