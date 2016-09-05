@@ -30,7 +30,7 @@ Running the application is as easy as building and a one step process. Once you 
 ```
 java -jar path/to/jar/db-retail-manager-0.1.0.jar
 ```
-During development you might want to run the application with jar, the following command will be useful to run without jar.
+During development the following command will be useful to run without jar.
 
 ```
 gradle run
