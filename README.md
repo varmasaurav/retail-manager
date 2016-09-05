@@ -1,5 +1,7 @@
 # retail-manager
-This rest web service is built with spring boot
+This rest web service is built with spring boot. It allows you to
+- Add a shop details along with its location
+- Find the nearest shop given a location
 
 ## Dependencies
 
@@ -80,6 +82,8 @@ HTTP RESPONSE  - 201 OK
 RESPONSE BODY  - {"successful": true}
 ```
 e.g - http://localhost:8080/retail/add-shop
+
+_**Please note that the `number` key in the request body actually takes the address (line 1, line 2 etc separated with comma except pin code)**_
 
 ### Get Nearest Shop
 
